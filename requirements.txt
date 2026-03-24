@@ -1,0 +1,11 @@
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+torch
+transformers
+datasets
+nltk
+emoji
+google-api-python-client
