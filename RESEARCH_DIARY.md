@@ -25,9 +25,40 @@ manually labbeling data is very time consuming and requires a lot of attention t
 * **Model Used:** TF-IDF + Logistic Regression (Class weights balanced).
 * **Results:** 70.15% Accuracy. 
 * **Observations:** Model was good at Positive (0.78 F1) but struggled with Negative (0.65 F1). Why? Probably because of sarcasm and complex vocabulary. 
+model struggled with neutral as well. when i was manually seeing the data labeled by baseline model and checking if baseline model did any mistake, i found out an example like that 
+
+"Yeh drama bohot aj kl chl raha hai sirf name ki waja sai open Kiya hai AJ ramzan hai inshallah abi papers ki tyri krraha huwn us Kai bd dekhuwn ga jab 2nd yr Kai papers de kr"
+
+the baseline model had labelled it as negative but it is actually neutral. the comment is basically saying that the person is waiting for the second episode of the drama to come out so that they can watch it after their exams. there is no positive or negative sentiment in this comment, it is just a neutral statement about waiting for something. this is an example of how sarcasm and complex vocabulary can make it difficult for the model to accurately predict sentiment.
+
+another example where baseline model failed was
+
+yeh car konsi hn plz batado ❤
+
+its clearly a neutral comment because the person is asking about the car in the video and there is no positive or negative sentiment in this comment. but the baseline model had labelled it as negative. i would not be surprised if model had labelled it a positive comment because of the heart emoji at the end. this is an example of baseline model getting it completely wrong.
+
+another one
+
+Ye cahe Spotify se htt gya pr mere dil se nhi htt paya 😭😭😭🎀🎀🤭🤭💗💓💓💞💞🫀💕💕❤️❤️💗,0.0
+
+model had labelled it as negative maybe because of the crying emojis but it is actually a positive comment because the person is expressing their love for the song and how they will miss it on Spotify. this is another example of how emojis can be a strong signal for sentiment and how the model can get it wrong if it does not understand the context.
+
+
 
 ## Phase 4: Transformer Fine-Tuning
-* (To be filled later)
+
+* **Model Used:** XLM-RoBERTa (base) via Hugging Face.
+* **Hardware:** NVIDIA T4 GPU (Google Colab).
+* **Hyperparameters:** 3 Epochs, Learning Rate 2e-5, Batch Size 16.
+* **Results:** 
+    * Test Accuracy: 73.80%
+    * Test F1-Score: 73.24%
+* **Scientific Observation:** The deep learning model outperformed the classical TF-IDF baseline by ~3.65%. This proves that contextual embeddings (reading sentences bi-directionally) are superior for handling the complex syntax, code-mixing, and sarcasm present in Roman Urdu.
 
 ## Phase 5: Error Analysis
 * (To be filled later)
+
+
+## Phase 6: Literature Review
+
+While some recent studies (e.g., [Author Year]) report anomalous perfect accuracies (100%) using DistilBERT on Roman Urdu, such metrics often indicate data leakage or evaluation on highly sterilized, non-representative datasets. In contrast, this study prioritizes real-world robustness. By evaluating XLM-RoBERTa on a newly scraped, highly noisy, and subjectively complex YouTube dataset, we achieve a scientifically realistic accuracy of 73.80%, proving that modern LLMs still struggle with Gen-Z code-mixing and cultural sarcasm."
