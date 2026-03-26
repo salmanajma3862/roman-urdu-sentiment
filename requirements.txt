@@ -9,3 +9,4 @@ datasets
 nltk
 emoji
 google-api-python-client
+evaluate
