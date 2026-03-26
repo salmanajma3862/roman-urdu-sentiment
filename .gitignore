@@ -1,0 +1,15 @@
+# Environments
+.venv/
+venv/
+env/
+__pycache__/
+
+# Huge AI Model files & Logs (Do not upload these!)
+results/
+logs/
+*.safetensors
+*.bin
+*.h5
+
+# OS generated files
+.DS_Store
