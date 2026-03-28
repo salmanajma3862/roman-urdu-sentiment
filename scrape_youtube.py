@@ -2,8 +2,8 @@ import pandas as pd
 from googleapiclient.discovery import build
 import os
 
-# Paste your API key here
-API_KEY = 'AIzaSyAfph2sosAggObSlhRF76gcWNDuYvxhzLs'
+# Set your YouTube Data API key here
+API_KEY = "YOUR_API_KEY_HERE"
 
 def scrape_youtube_comments(video_id, max_comments=1000):
     youtube = build('youtube', 'v3', developerKey=API_KEY)
